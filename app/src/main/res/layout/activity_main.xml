@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="next"
+        android:id="@+id/button_next"
+        android:layout_alignTop="@+id/button_playpause"
+        android:layout_toEndOf="@+id/button_playpause" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="play/pause"
+        android:id="@+id/button_playpause"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="89dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="prev"
+        android:id="@+id/button_prev"
+        android:layout_alignTop="@+id/button_playpause"
+        android:layout_toStartOf="@+id/button_playpause" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_below="@+id/button_playpause"
+        android:layout_alignStart="@+id/button_prev"
+        android:layout_marginTop="67dp"
+        android:layout_toStartOf="@+id/button_searchplay"
+        android:hint="search" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="search &amp; play"
+        android:id="@+id/button_searchplay"
+        android:layout_alignTop="@+id/editText"
+        android:layout_alignEnd="@+id/button_next" />
+</RelativeLayout>
