@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 String query = searchEditText.getText().toString().replaceAll(" ", "%20");
 
                 Ion.with(getApplicationContext())
-                        .load(SERVER_URL + "api/searchplay?query=" + query)
+                        .load(SERVER_URL + "/api/searchplay?query=" + query)
                         .setBodyParameter("a", "b")
                         .asString();
             }
