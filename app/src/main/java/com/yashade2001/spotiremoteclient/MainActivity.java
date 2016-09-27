@@ -56,7 +56,12 @@ public class MainActivity extends AppCompatActivity {
         searchplayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String query = searchEditText.getText().toString().replaceAll(" ", "%20");
+                String query = searchEditText.getText().toString()
+                        .replaceAll(" ", "%20")
+                        .replaceAll("ü", "%C3%BC")
+                        .replaceAll("ö", "%C3%B6")
+                        .replaceAll("ä", "%C3%84")
+                        .replaceAll("ß", "%C3%9F");
 
                 Ion.with(getApplicationContext())
                         .load(SERVER_URL + "/api/searchplay?query=" + query)
