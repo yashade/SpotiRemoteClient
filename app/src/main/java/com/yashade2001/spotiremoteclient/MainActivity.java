@@ -10,6 +10,8 @@ import com.koushikdutta.ion.Ion;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String SERVER_URL = "https://spotiremote.herokuapp.com";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Ion.with(getApplicationContext())
-                        .load("http://192.168.1.31:1337/api/prev")
+                        .load(SERVER_URL + "/api/prev")
                         .setBodyParameter("a", "b")
                         .asString();
             }
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Ion.with(getApplicationContext())
-                        .load("http://192.168.1.31:1337/api/next")
+                        .load(SERVER_URL + "/api/next")
                         .setBodyParameter("a", "b")
                         .asString();
             }
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Ion.with(getApplicationContext())
-                        .load("http://192.168.1.31:1337/api/playpause")
+                        .load(SERVER_URL + "/api/playpause")
                         .setBodyParameter("a", "b")
                         .asString();
             }
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 String query = searchEditText.getText().toString().replaceAll(" ", "%20");
 
                 Ion.with(getApplicationContext())
-                        .load("http://192.168.1.31:1337/api/searchplay?query=" + query)
+                        .load(SERVER_URL + "api/searchplay?query=" + query)
                         .setBodyParameter("a", "b")
                         .asString();
             }
