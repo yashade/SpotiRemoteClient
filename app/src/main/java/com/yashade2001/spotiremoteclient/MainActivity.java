@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SeekBar;
 
 import com.koushikdutta.ion.Ion;
 
@@ -22,13 +23,28 @@ public class MainActivity extends AppCompatActivity {
         Button playpauseButton = (Button) findViewById(R.id.button_playpause);
         final EditText searchEditText = (EditText) findViewById(R.id.editText);
         Button searchplayButton = (Button) findViewById(R.id.button_searchplay);
+        final SeekBar volumeSeekBar = (SeekBar) findViewById(R.id.seekBar);
+
+        volumeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                Ion.with(getApplicationContext())
+                        .load("POST", SERVER_URL + "/api/setvolume?level=" + progress)
+                        .asString();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) { }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) { }
+        });
 
         prevButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Ion.with(getApplicationContext())
-                        .load(SERVER_URL + "/api/prev")
-                        .setBodyParameter("a", "b")
+                        .load("POST", SERVER_URL + "/api/prev")
                         .asString();
             }
         });
@@ -37,8 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Ion.with(getApplicationContext())
-                        .load(SERVER_URL + "/api/next")
-                        .setBodyParameter("a", "b")
+                        .load("POST", SERVER_URL + "/api/next")
                         .asString();
             }
         });
@@ -47,8 +62,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Ion.with(getApplicationContext())
-                        .load(SERVER_URL + "/api/playpause")
-                        .setBodyParameter("a", "b")
+                        .load("POST", SERVER_URL + "/api/playpause")
                         .asString();
             }
         });
@@ -64,8 +78,7 @@ public class MainActivity extends AppCompatActivity {
                         .replaceAll("ß", "%C3%9F");
 
                 Ion.with(getApplicationContext())
-                        .load(SERVER_URL + "/api/searchplay?query=" + query)
-                        .setBodyParameter("a", "b")
+                        .load("POST", SERVER_URL + "/api/searchplay?query=" + query)
                         .asString();
             }
         });
