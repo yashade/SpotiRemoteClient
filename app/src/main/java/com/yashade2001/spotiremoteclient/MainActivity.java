@@ -23,8 +23,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
         if (sharedText != null) {
-            String trackId = sharedText.replace("https://open.spotify.com/track/", "");
-            String trackUri = "spotify:track:" + trackId;
+            String trackUri = sharedText.replace("https://open.spotify.com/track/", "spotify:track:");
             Ion.with(getApplicationContext())
                     .load("POST", SERVER_URL + "/api/share?track=" + trackUri)
                     .asString();
