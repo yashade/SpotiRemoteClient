@@ -26,7 +26,7 @@ import io.socket.emitter.Emitter;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String SERVER_URL = "http://192.168.1.31:1337";
+    public static final String SERVER_URL = "https://spotiremote.herokuapp.com";
 
     ImageView albumCoverImageView;
     TextView metaDataTextView;
